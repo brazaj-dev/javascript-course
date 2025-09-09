@@ -1,0 +1,22 @@
+{
+  "Console Log": {
+    "prefix": "cl",
+    "body": "console.log($1);",
+    "description": "Console log statement"
+  },
+  "Function Declaration": {
+    "prefix": "func",
+    "body": "function $1() {\n\t$2\n}",
+    "description": "Function declaration"
+  },
+  "Arrow Function": {
+    "prefix": "arrow",
+    "body": "const $1 = ($2) => {\n\t$3\n};",
+    "description": "Arrow function"
+  },
+  "For Loop": {
+    "prefix": "forloop",
+    "body": "for (let ${1:i} = 0; ${1:i} < ${2:array}.length; ${1:i}++) {\n\t$3\n}",
+    "description": "For loop"
+  }
+}
