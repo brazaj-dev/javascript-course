@@ -37,6 +37,16 @@ document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
   console.log('Players guessed:', guess);
 
+  if (!guess) {
+    document.querySelector('.message').textContent = 'Please input a number!';
+    return;
+  }
+
+  if (guess < 1 || guess > 20) {
+    document.querySelector('.message').textContent =
+      'Number must be between 1 and 20';
+    return;
+  }
   if (guess === secretNumber) {
     console.log('Your guess is correct!');
     document.querySelector('.message').textContent = 'Correct Number ';
@@ -44,6 +54,7 @@ document.querySelector('.check').addEventListener('click', function () {
     if (score > highscore) {
       highscore = score;
       document.querySelector('.highscore').textContent = highscore;
+      document.body.style.backgroundColor = 'green';
     }
     document.querySelector('.message').textContent = 'You have won!';
     document.querySelector('.guess').disabled = true;
@@ -59,6 +70,9 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.number').textContent = secretNumber;
       document.querySelector('.guess').disabled = true;
       document.querySelector('.score').disabled = true;
+      document.body.style.backgroundColor = 'maroon';
+      document.querySelector('.message').textContent = 'Game Over!';
+      document.querySelector('.guess').value = '';
     }
   } else if (guess < secretNumber) {
     console.log('Too low!');
@@ -71,6 +85,9 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.number').textContent = secretNumber;
       document.querySelector('.guess').disabled = true;
       document.querySelector('.score').disabled = true;
+      document.body.style.backgroundColor = 'maroon';
+      document.querySelector('.message').textContent = 'Game Over!';
+      document.querySelector('.guess').value = '';
     }
   }
 });
@@ -86,4 +103,5 @@ document.querySelector('.again').addEventListener('click', function () {
   document.querySelector('.guess').value = '';
   document.querySelector('.guess').disabled = false;
   document.querySelector('.check').disabled = false;
+  document.body.style.backgroundColor = '';
 });
